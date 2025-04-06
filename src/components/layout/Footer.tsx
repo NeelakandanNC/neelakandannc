@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground pt-12 pb-8">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Neelakandan NC</h3>
             <p className="text-primary-foreground/80">
@@ -40,24 +40,6 @@ const Footer = () => {
                 </NavLink>
               </li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Connect</h4>
-            <p className="text-primary-foreground/80 mb-4">
-              Feel free to reach out and connect with me on social media.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" aria-label="Twitter" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Twitter
-              </a>
-              <a href="#" aria-label="Github" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                GitHub
-              </a>
-              <a href="#" aria-label="LinkedIn" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                LinkedIn
-              </a>
-            </div>
           </div>
         </div>
         
