@@ -2,10 +2,42 @@
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import SectionHeader from '@/components/common/SectionHeader';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import BlogCard, { BlogPost } from '@/components/blog/BlogCard';
+
+// Sample blog data
+const featuredPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: 'Getting Started with Web Development',
+    excerpt: 'Learn the basics of web development and how to create your first website using modern technologies.',
+    date: 'Apr 2, 2025',
+    readTime: '5 min read',
+    category: 'Technology',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c',
+  },
+  {
+    id: '2',
+    title: 'My Journey in Design Systems',
+    excerpt: 'A personal account of learning and implementing design systems in real-world projects.',
+    date: 'Mar 25, 2025',
+    readTime: '8 min read',
+    category: 'Design',
+    image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9',
+  },
+  {
+    id: '3',
+    title: 'The Power of Mindfulness in Daily Life',
+    excerpt: 'Exploring how mindfulness practices can improve focus, reduce stress, and increase overall wellbeing.',
+    date: 'Mar 18, 2025',
+    readTime: '6 min read',
+    category: 'Lifestyle',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773',
+  },
+];
 
 const Index = () => {
   return (
@@ -75,61 +107,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Content */}
+      {/* Featured Stories Section */}
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
-            title="Featured Content" 
-            subtitle="Explore some of my latest stories and works."
+            title="Featured Stories" 
+            subtitle="Read some of my latest thoughts and insights."
             centered
             className="animate-on-scroll"
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {/* Blog Preview Card */}
-            <Card className="animate-on-scroll">
-              <CardContent className="p-6 space-y-4">
-                <div className="text-2xl font-semibold">Latest Stories</div>
-                <p className="text-muted-foreground">
-                  Dive into my thoughts, tutorials, and insights on various topics.
-                </p>
-                <Button variant="outline" asChild>
-                  <Link to="/blog">
-                    Browse All Stories <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-            
-            {/* Projects Preview Card */}
-            <Card className="animate-on-scroll">
-              <CardContent className="p-6 space-y-4">
-                <div className="text-2xl font-semibold">Works Showcase</div>
-                <p className="text-muted-foreground">
-                  Explore the various projects I've worked on throughout my career.
-                </p>
-                <Button variant="outline" asChild>
-                  <Link to="/projects">
-                    View All Works <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-            
-            {/* Timeline Preview Card */}
-            <Card className="animate-on-scroll">
-              <CardContent className="p-6 space-y-4">
-                <div className="text-2xl font-semibold">Life Timeline</div>
-                <p className="text-muted-foreground">
-                  Journey through the significant events and milestones in my life.
-                </p>
-                <Button variant="outline" asChild>
-                  <Link to="/timeline">
-                    Explore Timeline <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+            {featuredPosts.map((post) => (
+              <div key={post.id} className="animate-on-scroll">
+                <BlogCard post={post} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center animate-on-scroll">
+            <Button asChild>
+              <Link to="/blog">
+                View All Stories <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
