@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">My Chronicle</h3>
+            <h3 className="text-xl font-bold mb-4">Neelakandan NC</h3>
             <p className="text-primary-foreground/80">
               Documenting my journey, sharing my thoughts, and showcasing my work.
             </p>
@@ -26,7 +26,7 @@ const Footer = () => {
               </li>
               <li>
                 <NavLink to="/blog" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Blog
+                  Stories
                 </NavLink>
               </li>
               <li>
@@ -36,7 +36,7 @@ const Footer = () => {
               </li>
               <li>
                 <NavLink to="/projects" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  Projects
+                  Works
                 </NavLink>
               </li>
             </ul>
@@ -63,7 +63,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-6 border-t border-primary-foreground/20 text-center">
           <p className="text-primary-foreground/70 text-sm">
-            &copy; {currentYear} My Chronicle. All rights reserved.
+            &copy; {currentYear} Neelakandan NC. All rights reserved.
           </p>
         </div>
       </div>

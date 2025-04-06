@@ -26,9 +26,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
+    { name: "Stories", path: "/blog" },
     { name: "Timeline", path: "/timeline" },
-    { name: "Projects", path: "/projects" },
+    { name: "Works", path: "/projects" },
   ];
 
   return (
@@ -42,7 +42,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <NavLink to="/" className="text-xl md:text-2xl font-bold text-primary">
-          My Chronicle
+          Neelakandan NC
         </NavLink>
         
         <nav className="hidden md:flex space-x-6">
@@ -76,7 +76,7 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="fixed inset-0 bg-background z-50 animate-fade-in">
             <div className="container mx-auto px-4 py-5 flex justify-between items-center">
-              <span className="text-xl font-bold text-primary">My Chronicle</span>
+              <span className="text-xl font-bold text-primary">Neelakandan NC</span>
               <Button 
                 variant="ghost" 
                 size="icon"

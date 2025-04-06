@@ -84,7 +84,7 @@ const Blog = () => {
       <section className="bg-muted py-20 md:py-28">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Blog</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Stories</h1>
             <p className="text-xl text-muted-foreground">
               Thoughts, insights, tutorials, and stories from my personal and professional journey.
             </p>
@@ -100,7 +100,7 @@ const Blog = () => {
             <div className="relative flex-grow">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search posts..."
+                placeholder="Search stories..."
                 className="pl-10"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -134,7 +134,7 @@ const Blog = () => {
               ))
             ) : (
               <div className="col-span-full py-20 text-center">
-                <p className="text-xl text-muted-foreground">No posts found matching your criteria.</p>
+                <p className="text-xl text-muted-foreground">No stories found matching your criteria.</p>
               </div>
             )}
           </div>

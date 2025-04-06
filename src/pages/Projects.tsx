@@ -86,7 +86,7 @@ const Projects = () => {
       <section className="bg-muted py-20 md:py-28">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Projects</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Works</h1>
             <p className="text-xl text-muted-foreground">
               A showcase of my work, projects, and creative endeavors.
             </p>
@@ -100,7 +100,7 @@ const Projects = () => {
           {/* Filter Buttons */}
           <div className="mb-12 animate-fade-in">
             <SectionHeader 
-              title="Browse Projects" 
+              title="Browse Works" 
               subtitle="Filter by technology to find specific projects." 
               className="mb-6"
             />
@@ -132,14 +132,14 @@ const Projects = () => {
           {filteredProjects.length === 0 && (
             <div className="text-center py-20">
               <p className="text-xl text-muted-foreground">
-                No projects found with the selected filter.
+                No works found with the selected filter.
               </p>
               <Button 
                 onClick={() => setFilter('All')} 
                 variant="outline" 
                 className="mt-4"
               >
-                Show All Projects
+                Show All Works
               </Button>
             </div>
           )}

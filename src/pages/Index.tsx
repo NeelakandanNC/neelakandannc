@@ -15,7 +15,7 @@ const Index = () => {
         <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
           <div className="max-w-3xl space-y-6 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight">
-              Welcome to My Personal Chronicle
+              Welcome to Neelakandan NC
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">
               Documenting my journey, sharing my thoughts, and showcasing my work.
@@ -23,12 +23,12 @@ const Index = () => {
             <div className="flex flex-wrap gap-4 pt-4">
               <Button asChild size="lg">
                 <Link to="/blog">
-                  Read My Blog
+                  Read My Stories
                 </Link>
               </Button>
               <Button variant="outline" asChild size="lg">
                 <Link to="/projects">
-                  View Projects
+                  View Works
                 </Link>
               </Button>
             </div>
@@ -80,7 +80,7 @@ const Index = () => {
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
             title="Featured Content" 
-            subtitle="Explore some of my latest blog posts and projects."
+            subtitle="Explore some of my latest stories and works."
             centered
             className="animate-on-scroll"
           />
@@ -89,13 +89,13 @@ const Index = () => {
             {/* Blog Preview Card */}
             <Card className="animate-on-scroll">
               <CardContent className="p-6 space-y-4">
-                <div className="text-2xl font-semibold">Latest Blog Posts</div>
+                <div className="text-2xl font-semibold">Latest Stories</div>
                 <p className="text-muted-foreground">
                   Dive into my thoughts, tutorials, and insights on various topics.
                 </p>
                 <Button variant="outline" asChild>
                   <Link to="/blog">
-                    Browse All Posts <ArrowRight className="ml-2 h-4 w-4" />
+                    Browse All Stories <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
@@ -104,13 +104,13 @@ const Index = () => {
             {/* Projects Preview Card */}
             <Card className="animate-on-scroll">
               <CardContent className="p-6 space-y-4">
-                <div className="text-2xl font-semibold">Projects Showcase</div>
+                <div className="text-2xl font-semibold">Works Showcase</div>
                 <p className="text-muted-foreground">
                   Explore the various projects I've worked on throughout my career.
                 </p>
                 <Button variant="outline" asChild>
                   <Link to="/projects">
-                    View All Projects <ArrowRight className="ml-2 h-4 w-4" />
+                    View All Works <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
