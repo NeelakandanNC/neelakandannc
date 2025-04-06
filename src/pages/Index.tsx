@@ -1,11 +1,10 @@
-
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import SectionHeader from '@/components/common/SectionHeader';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Linkedin, Mail, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 import BlogCard, { BlogPost } from '@/components/blog/BlogCard';
 
 // Sample blog data
@@ -135,22 +134,77 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact CTA */}
+      {/* Contact CTA with Social Media Icons */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
             Let's Connect!
           </h2>
           <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-on-scroll">
-            Have a question or just want to say hello? I'd love to hear from you.
+            Have a question or just want to say hello? Find me on these platforms.
           </p>
-          <Button 
-            variant="secondary" 
-            size="lg" 
-            className="mt-6 animate-on-scroll"
-          >
-            Get In Touch
-          </Button>
+          <div className="flex flex-wrap justify-center gap-4 mt-8 animate-on-scroll">
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <Linkedin size={24} />
+              </a>
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="mailto:contact@example.com" aria-label="Email">
+                <Mail size={24} />
+              </a>
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <Instagram size={24} />
+              </a>
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <Twitter size={24} />
+              </a>
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <Facebook size={24} />
+              </a>
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="icon" 
+              className="rounded-full hover:scale-110 transition-transform"
+              asChild
+            >
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <Youtube size={24} />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
     </PageLayout>
