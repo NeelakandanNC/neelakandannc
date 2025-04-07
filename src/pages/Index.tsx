@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,7 @@ import SectionHeader from '@/components/common/SectionHeader';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Linkedin, Mail, Instagram, Twitter, Facebook, Youtube } from 'lucide-react';
 import BlogCard, { BlogPost } from '@/components/blog/BlogCard';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 // Sample blog data
 const featuredPosts: BlogPost[] = [
@@ -79,10 +81,11 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="animate-on-scroll">
               <div className="aspect-square rounded-2xl bg-muted overflow-hidden border border-border">
-                {/* Replace with your image */}
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                  Your Photo Here
-                </div>
+                <img 
+                  src="/lovable-uploads/30216f8c-ddb5-4ea6-89d2-e2a31290c718.png" 
+                  alt="Neelakandan NC" 
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </div>
             
