@@ -71,12 +71,21 @@ const projects: Project[] = [
 const Projects = () => {
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-background/80 to-muted/30">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">My Works</h1>
-            <p className="text-xl text-foreground/80">
+      {/* Hero Section with futuristic gradient background */}
+      <section className="py-24 md:py-32 bg-gradient-futuristic relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-[20%] left-[10%] w-60 h-60 rounded-full bg-accent/30 blur-[100px]"></div>
+          <div className="absolute bottom-[10%] right-[15%] w-80 h-80 rounded-full bg-primary/30 blur-[120px]"></div>
+          <div className="absolute top-[40%] right-[30%] w-40 h-40 rounded-full bg-secondary/30 blur-[80px]"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient neon-text animate-fade-in">
+              My Works
+            </h1>
+            <p className="text-xl md:text-2xl text-foreground/80 animate-fade-in">
               A showcase of my work, projects, and creative endeavors.
             </p>
           </div>
@@ -98,7 +107,7 @@ const Projects = () => {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map(project => (
-              <div key={project.id} className="animate-on-scroll">
+              <div key={project.id} className="animate-on-scroll hover-lift">
                 <ProjectCard project={project} />
               </div>
             ))}
