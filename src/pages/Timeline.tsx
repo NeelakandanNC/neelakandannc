@@ -1,8 +1,8 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import TimelineCard, { TimelineEvent } from '@/components/timeline/TimelineCard';
-import { initAnimateOnScroll } from '@/utils/animateOnScroll';
+import useAnimateOnScroll from '@/utils/animateOnScroll';
 
 // Enhanced timeline data with new events
 const timelineEvents: TimelineEvent[] = [
@@ -93,15 +93,8 @@ const timelineEvents: TimelineEvent[] = [
 ];
 
 const Timeline = () => {
-  useEffect(() => {
-    // Initialize the animation on scroll
-    initAnimateOnScroll();
-    
-    // Re-initialize when the component updates
-    return () => {
-      initAnimateOnScroll();
-    };
-  }, []);
+  // Use the correct hook to initialize animation
+  useAnimateOnScroll();
   
   return (
     <PageLayout>
