@@ -1,8 +1,7 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import ProjectCard, { Project } from '@/components/projects/ProjectCard';
-import { Button } from '@/components/ui/button';
 import SectionHeader from '@/components/common/SectionHeader';
 
 // Sample projects data
@@ -70,16 +69,6 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
-  const [filter, setFilter] = useState('All');
-  
-  // Extract all unique tags
-  const allTags = ['All', ...Array.from(new Set(projects.flatMap(project => project.tags)))];
-  
-  // Filter projects based on selected tag
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.tags.includes(filter));
-
   return (
     <PageLayout>
       {/* Hero Section */}
@@ -97,52 +86,23 @@ const Projects = () => {
       {/* Projects Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          {/* Filter Buttons */}
+          {/* Section Header */}
           <div className="mb-12 animate-fade-in">
             <SectionHeader 
               title="Browse Works" 
-              subtitle="Filter by technology to find specific projects." 
+              subtitle="Explore my recent projects and professional work." 
               className="mb-6"
             />
-            
-            <div className="flex flex-wrap gap-2">
-              {allTags.map(tag => (
-                <Button 
-                  key={tag} 
-                  variant={filter === tag ? "default" : "outline"} 
-                  onClick={() => setFilter(tag)}
-                  className="mb-2"
-                >
-                  {tag}
-                </Button>
-              ))}
-            </div>
           </div>
           
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map(project => (
+            {projects.map(project => (
               <div key={project.id} className="animate-on-scroll">
                 <ProjectCard project={project} />
               </div>
             ))}
           </div>
-          
-          {/* Empty State */}
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-xl text-muted-foreground">
-                No works found with the selected filter.
-              </p>
-              <Button 
-                onClick={() => setFilter('All')} 
-                variant="outline" 
-                className="mt-4"
-              >
-                Show All Works
-              </Button>
-            </div>
-          )}
         </div>
       </section>
     </PageLayout>
