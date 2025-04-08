@@ -153,7 +153,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/neelakandan-nc/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin size={24} />
               </a>
             </Button>
@@ -163,7 +163,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="mailto:contact@example.com" aria-label="Email">
+              <a href="mailto:neelakandannithin@gmail.com" aria-label="Email">
                 <Mail size={24} />
               </a>
             </Button>
@@ -173,7 +173,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/neelakandannc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <Instagram size={24} />
               </a>
             </Button>
@@ -183,7 +183,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+              <a href="https://x.com/NeelakandanNC" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
                 <Twitter size={24} />
               </a>
             </Button>
@@ -193,7 +193,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/NeelakandanNC" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <Facebook size={24} />
               </a>
             </Button>
@@ -203,7 +203,7 @@ const Index = () => {
               className="rounded-full hover:scale-110 transition-transform"
               asChild
             >
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <a href="https://www.youtube.com/@Journeyofbuilders" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <Youtube size={24} />
               </a>
             </Button>
