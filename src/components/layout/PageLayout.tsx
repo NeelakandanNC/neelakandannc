@@ -9,13 +9,9 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   useEffect(() => {
-    // Check stored theme preference
-    const storedTheme = localStorage.getItem('theme') || 'dark';
-    if (storedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Ensure dark mode is always applied
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
     
     // Scroll to top on page change
     window.scrollTo(0, 0);

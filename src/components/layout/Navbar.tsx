@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -10,19 +10,11 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(true); // Dark mode by default
   
   useEffect(() => {
-    // Check if there's a stored preference
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setIsDarkMode(storedTheme === 'dark');
-      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
-    } else {
-      // If no stored preference, default to dark mode
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
+    // Ensure dark mode is always applied
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
     
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -49,19 +41,6 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [lastScrollY]);
-
-  const toggleDarkMode = () => {
-    const newTheme = !isDarkMode ? 'dark' : 'light';
-    
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    
-    localStorage.setItem('theme', newTheme);
-    setIsDarkMode(!isDarkMode);
-  };
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -100,35 +79,9 @@ const Navbar = () => {
               {link.name}
             </NavLink>
           ))}
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={toggleDarkMode}
-            className="text-foreground hover:text-primary transition-colors neon-glow"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? (
-              <Sun size={20} className="transition-transform hover:rotate-45 duration-300" />
-            ) : (
-              <Moon size={20} className="transition-transform hover:rotate-12 duration-300" />
-            )}
-          </Button>
         </nav>
 
-        <div className="md:hidden flex items-center space-x-2">
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={toggleDarkMode}
-            className="text-foreground mr-1"
-            aria-label="Toggle theme"
-          >
-            {isDarkMode ? (
-              <Sun size={18} />
-            ) : (
-              <Moon size={18} />
-            )}
-          </Button>
+        <div className="md:hidden flex items-center">
           <Button 
             variant="ghost" 
             size="icon" 
