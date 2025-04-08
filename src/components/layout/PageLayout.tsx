@@ -9,8 +9,13 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   useEffect(() => {
-    // Ensure dark mode is set by default
-    document.documentElement.classList.add('dark');
+    // Check stored theme preference
+    const storedTheme = localStorage.getItem('theme') || 'dark';
+    if (storedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
     
     // Scroll to top on page change
     window.scrollTo(0, 0);

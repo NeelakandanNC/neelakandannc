@@ -13,6 +13,17 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(true); // Dark mode by default
   
   useEffect(() => {
+    // Check if there's a stored preference
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setIsDarkMode(storedTheme === 'dark');
+      document.documentElement.classList.toggle('dark', storedTheme === 'dark');
+    } else {
+      // If no stored preference, default to dark mode
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -40,11 +51,15 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   const toggleDarkMode = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-    } else {
+    const newTheme = !isDarkMode ? 'dark' : 'light';
+    
+    if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
+    
+    localStorage.setItem('theme', newTheme);
     setIsDarkMode(!isDarkMode);
   };
 

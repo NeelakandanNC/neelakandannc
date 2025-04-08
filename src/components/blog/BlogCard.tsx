@@ -26,7 +26,8 @@ const BlogCard = ({ post, className }: BlogCardProps) => {
   return (
     <Link to={`/blog/${post.id}`} className="block group">
       <Card className={cn(
-        "overflow-hidden h-full border-border/30 transition-all duration-300 bg-card/70 backdrop-blur-sm hover:shadow-lg hover:shadow-primary/5 blog-card",
+        "overflow-hidden h-full transition-all duration-300 backdrop-blur-sm hover:shadow-lg dark:hover:shadow-primary/5 blog-card border-border/30",
+        "bg-card/70 dark:bg-card/70",
         className
       )}>
         {post.image && (
