@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { CalendarIcon, ClockIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export interface BlogPost {
   id: string;
@@ -13,45 +14,61 @@ export interface BlogPost {
   readTime: string;
   category: string;
   image?: string;
+  featured?: boolean;
 }
 
 interface BlogCardProps {
   post: BlogPost;
+  className?: string;
 }
 
-const BlogCard = ({ post }: BlogCardProps) => {
+const BlogCard = ({ post, className }: BlogCardProps) => {
   return (
     <Link to={`/blog/${post.id}`} className="block group">
-      <Card className="overflow-hidden h-full border border-border/50 transition-all duration-300 hover:shadow-md hover:border-border">
+      <Card className={cn(
+        "overflow-hidden h-full border-border/30 transition-all duration-300 bg-card/70 backdrop-blur-sm hover:shadow-lg hover:shadow-primary/5 blog-card",
+        className
+      )}>
         {post.image && (
-          <div className="h-48 overflow-hidden">
+          <div className="h-52 overflow-hidden">
             <img 
               src={post.image} 
               alt={post.title} 
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
             />
           </div>
         )}
         
-        <CardContent className="pt-6">
-          <Badge variant="outline" className="mb-3">
-            {post.category}
-          </Badge>
-          <h3 className="text-xl font-semibold mb-2 group-hover:text-secondary transition-colors">
+        <CardContent className={cn("pt-6", !post.image && "pb-0")}>
+          <div className="flex justify-between items-start mb-3">
+            <Badge variant={post.featured ? "default" : "outline"} className="text-xs">
+              {post.category}
+            </Badge>
+            
+            {post.featured && (
+              <Badge variant="secondary" className="text-xs">
+                Featured
+              </Badge>
+            )}
+          </div>
+          
+          <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
             {post.title}
           </h3>
-          <p className="text-muted-foreground line-clamp-3">
+          
+          <p className="text-muted-foreground line-clamp-2 text-sm">
             {post.excerpt}
           </p>
         </CardContent>
         
-        <CardFooter className="text-sm text-muted-foreground flex justify-between">
+        <CardFooter className="text-xs text-muted-foreground flex justify-between pt-4 pb-5">
           <div className="flex items-center">
-            <CalendarIcon className="h-4 w-4 mr-1" />
+            <CalendarIcon className="h-3 w-3 mr-1.5" />
             <span>{post.date}</span>
           </div>
           <div className="flex items-center">
-            <ClockIcon className="h-4 w-4 mr-1" />
+            <ClockIcon className="h-3 w-3 mr-1.5" />
             <span>{post.readTime}</span>
           </div>
         </CardFooter>

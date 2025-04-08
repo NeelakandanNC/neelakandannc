@@ -9,6 +9,9 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   useEffect(() => {
+    // Ensure dark mode is set by default
+    document.documentElement.classList.add('dark');
+    
     // Scroll to top on page change
     window.scrollTo(0, 0);
     
@@ -34,7 +37,7 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow pt-20 animate-fade-in">
+      <main className="flex-grow pt-16 md:pt-20 animate-fade-in">
         {children}
       </main>
       <Footer />

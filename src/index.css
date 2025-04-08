@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,8 +7,8 @@
 
 @layer base {
   :root {
-    /* Modern bright theme with electric blue, magenta, cyan, and orange */
-    --background: 210 30% 98%; /* Soft off-white */
+    /* Light mode theme (secondary) */
+    --background: 210 30% 98%; 
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -20,13 +20,13 @@
     --primary: 210 100% 50%; /* Electric Blue #007BFF */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 324 100% 50%; /* Vibrant Magenta #FF007F */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 180 100% 50%; /* Bright Cyan #00FFFF */
+    --secondary-foreground: 222 47% 11%;
 
     --muted: 210 20% 96%;
     --muted-foreground: 215 25% 46%;
 
-    --accent: 180 100% 50%; /* Bright Cyan #00FFFF */
+    --accent: 270 100% 69%; /* Soft Purple #A29BFE */
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
@@ -36,9 +36,9 @@
     --input: 214 32% 91%;
     --ring: 210 100% 50%; /* Electric Blue */
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Adding a bright orange as another accent */
+    /* Additional colors */
     --orange: 36 100% 50%; /* Bold Orange #FF9900 */
     
     /* Sidebar customization */
@@ -53,46 +53,47 @@
   }
 
   .dark {
-    --background: 222 47% 11%; /* Deep navy for dark mode */
-    --foreground: 210 40% 98%;
+    /* Dark mode is now default */
+    --background: 222 20% 8%; /* Deep charcoal black #0D1117 */
+    --foreground: 220 14% 80%; /* Light gray #C9D1D9 */
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 222 25% 10%;
+    --card-foreground: 220 14% 80%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 220 14% 80%;
 
-    --primary: 210 100% 50%; /* Electric Blue #007BFF */
-    --primary-foreground: 0 0% 100%;
+    --primary: 180 100% 50%; /* Bright Cyan #00FFFF */
+    --primary-foreground: 222 25% 10%;
 
-    --secondary: 324 100% 50%; /* Vibrant Magenta #FF007F */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 100% 50%; /* Electric Blue #007BFF */
+    --secondary-foreground: 220 14% 80%;
 
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 223 17% 15%;
+    --muted-foreground: 220 10% 70%;
 
-    --accent: 180 100% 50%; /* Bright Cyan #00FFFF */
-    --accent-foreground: 210 40% 98%;
+    --accent: 270 100% 69%; /* Soft Purple #A29BFE */
+    --accent-foreground: 220 14% 80%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 210 100% 50%;
+    --border: 223 17% 15%;
+    --input: 223 17% 15%;
+    --ring: 180 100% 50%; /* Bright Cyan */
     
-    /* Dark mode has deep purple accents */
+    /* Bold Orange for accents */
     --orange: 36 100% 50%; /* Bold Orange #FF9900 */
     
     /* Sidebar dark theme */
-    --sidebar-background: 273 100% 13%; /* Deep purple for dark mode sidebar #2A003F */
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 210 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 180 100% 50%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 273 50% 20%;
-    --sidebar-ring: 210 100% 50%;
+    --sidebar-background: 222 30% 6%; /* Even deeper charcoal for sidebar */
+    --sidebar-foreground: 220 14% 80%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 222 25% 10%;
+    --sidebar-accent: 270 100% 69%;
+    --sidebar-accent-foreground: 220 14% 80%;
+    --sidebar-border: 223 27% 13%;
+    --sidebar-ring: 180 100% 50%;
   }
 }
 
@@ -101,19 +102,32 @@
     @apply border-border selection:bg-primary/20 selection:text-primary;
   }
 
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans;
-    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background)/0.9), hsl(var(--muted)/0.5));
+    @apply bg-background text-foreground font-sans dark;
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--background)/0.97));
     min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-semibold tracking-tight;
+    @apply font-display font-semibold tracking-tight;
   }
   
   p {
-    @apply leading-7;
+    @apply leading-relaxed font-body;
   }
+
+  /* Make text sizes responsive and more readable */
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
+  h5 { @apply text-lg md:text-xl; }
+  h6 { @apply text-base md:text-lg; }
+  p { @apply text-base md:text-lg; }
 }
 
 @layer utilities {
@@ -122,11 +136,11 @@
   }
   
   .text-content {
-    @apply font-serif leading-relaxed text-foreground/90;
+    @apply font-body leading-relaxed text-foreground/90;
   }
   
   .animate-on-scroll {
-    @apply opacity-0 transform translate-y-8 transition-all duration-700 ease-out;
+    @apply opacity-0 transform translate-y-6 transition-all duration-700 ease-out;
   }
   
   .animate-on-scroll.animated {
@@ -139,25 +153,24 @@
   
   /* Modern glassmorphism card */
   .card-gradient {
-    @apply bg-gradient-to-br from-white/70 to-white/40 dark:from-background/40 dark:to-muted/20;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    @apply bg-gradient-to-br from-card/90 to-card/40 backdrop-blur-md;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
   
   /* Enhanced glassmorphism */
   .glass-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(13, 17, 23, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     @apply rounded-xl;
   }
   
   /* Text gradient effects */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent;
   }
   
   .text-gradient-orange {
@@ -170,21 +183,21 @@
   }
   
   .bg-gradient-futuristic {
-    background: linear-gradient(135deg, hsl(var(--primary)/0.9), hsl(var(--secondary)/0.8), hsl(var(--accent)/0.7));
+    background: linear-gradient(135deg, hsl(var(--background)/0.9), hsl(var(--background)/0.7), hsl(var(--background)/0.8));
   }
   
   /* Neon glow effects */
   .neon-glow {
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5), 0 0 30px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2);
     transition: box-shadow 0.3s ease;
   }
   
   .neon-glow:hover {
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.7), 0 0 40px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.3);
   }
   
   .neon-text {
-    text-shadow: 0 0 10px rgba(0, 123, 255, 0.6), 0 0 20px rgba(0, 123, 255, 0.4);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
   }
   
   /* Interactive elements */
@@ -194,6 +207,51 @@
   
   .hover-lift:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.15);
+  }
+
+  /* Link animations */
+  .animated-link {
+    @apply relative inline-block text-foreground;
+  }
+  
+  .animated-link::after {
+    content: '';
+    @apply absolute w-full scale-x-0 h-0.5 bg-primary bottom-0 left-0 origin-bottom-right transition-transform duration-300;
+  }
+  
+  .animated-link:hover::after {
+    @apply scale-x-100 origin-bottom-left;
+  }
+
+  /* Read time indicator */
+  .read-time {
+    @apply inline-flex items-center text-sm text-muted-foreground;
+  }
+
+  /* Blog card hover effect */
+  .blog-card {
+    @apply transition-all duration-300;
+  }
+  
+  .blog-card:hover {
+    @apply transform -translate-y-1 shadow-lg shadow-primary/10;
+  }
+
+  /* Typewriter effect for hero section */
+  .typewriter {
+    @apply overflow-hidden border-r-2 border-primary;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: hsl(var(--primary)) }
   }
 }

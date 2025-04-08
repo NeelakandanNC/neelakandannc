@@ -1,11 +1,11 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
-import SectionHeader from '@/components/common/SectionHeader';
 import BlogCard, { BlogPost } from '@/components/blog/BlogCard';
 import { Button } from '@/components/ui/button';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, BookOpen } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 // Sample blog data
 const blogPosts: BlogPost[] = [
@@ -17,6 +17,7 @@ const blogPosts: BlogPost[] = [
     readTime: '5 min read',
     category: 'Technology',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c',
+    featured: true,
   },
   {
     id: '2',
@@ -26,6 +27,7 @@ const blogPosts: BlogPost[] = [
     readTime: '8 min read',
     category: 'Design',
     image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9',
+    featured: true,
   },
   {
     id: '3',
@@ -68,6 +70,7 @@ const blogPosts: BlogPost[] = [
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [observer, setObserver] = useState<IntersectionObserver | null>(null);
   
   const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
   
@@ -78,13 +81,46 @@ const Blog = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const featuredPosts = filteredPosts.filter(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    setObserver(obs);
+    
+    return () => {
+      if (obs) obs.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (observer) {
+      document.querySelectorAll('.animate-on-scroll:not(.animated)').forEach(el => {
+        observer.observe(el);
+      });
+    }
+  }, [filteredPosts, observer]);
+
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="bg-muted py-20 md:py-28">
+      <section className="bg-gradient-futuristic py-24 md:py-28">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Stories</h1>
+            <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 text-gradient">
+              My Stories
+            </h1>
             <p className="text-xl text-muted-foreground">
               Thoughts, insights, tutorials, and stories from my personal and professional journey.
             </p>
@@ -93,10 +129,10 @@ const Blog = () => {
       </section>
 
       {/* Blog Content */}
-      <section className="py-12 md:py-16">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-4 mb-12 animate-fade-in">
+          <div className="flex flex-col md:flex-row gap-4 mb-10 animate-fade-in">
             <div className="relative flex-grow">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
@@ -106,16 +142,20 @@ const Blog = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-            <div className="flex items-center space-x-2">
-              <Filter className="text-muted-foreground h-4 w-4" />
-              <span className="text-sm text-muted-foreground">Filter by:</span>
-              <div className="flex flex-wrap gap-2">
+            <div className="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0">
+              <Filter className="text-muted-foreground h-4 w-4 hidden md:block" />
+              <span className="text-sm text-muted-foreground hidden md:block">Filter by:</span>
+              <div className="flex flex-nowrap gap-2">
                 {categories.map(category => (
                   <Button 
                     key={category} 
                     variant={selectedCategory === category ? "default" : "outline"} 
                     size="sm"
                     onClick={() => setSelectedCategory(category)}
+                    className={cn(
+                      "whitespace-nowrap",
+                      selectedCategory === category ? "neon-glow" : ""
+                    )}
                   >
                     {category}
                   </Button>
@@ -124,18 +164,38 @@ const Blog = () => {
             </div>
           </div>
           
-          {/* Blog Grid */}
+          {/* Featured Posts */}
+          {featuredPosts.length > 0 && (
+            <div className="mb-16">
+              <div className="flex items-center gap-2 mb-6">
+                <BookOpen className="h-5 w-5 text-primary" />
+                <h2 className="text-2xl font-display font-semibold">Featured Posts</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {featuredPosts.map((post) => (
+                  <div key={post.id} className="animate-on-scroll">
+                    <BlogCard post={post} className="h-full" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* Regular Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post) => (
+            {regularPosts.length > 0 ? (
+              regularPosts.map((post) => (
                 <div key={post.id} className="animate-on-scroll">
-                  <BlogCard post={post} />
+                  <BlogCard post={post} className="h-full" />
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-20 text-center">
-                <p className="text-xl text-muted-foreground">No stories found matching your criteria.</p>
-              </div>
+              filteredPosts.length === 0 && (
+                <div className="col-span-full py-20 text-center">
+                  <p className="text-xl text-muted-foreground">No stories found matching your criteria.</p>
+                </div>
+              )
             )}
           </div>
         </div>

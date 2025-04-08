@@ -71,20 +71,12 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				},
 				'fade-in': {
 					'0%': {
@@ -123,6 +115,14 @@ export default {
 					'100%': {
 						transform: 'translateX(0)'
 					}
+				},
+				'slide-down': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(0)' }
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(-100%)' }
 				}
 			},
 			animation: {
@@ -131,11 +131,52 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'fade-out': 'fade-out 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
-				'slide-in': 'slide-in 0.3s ease-out'
+				'slide-in': 'slide-in 0.3s ease-out',
+				'slide-down': 'slide-down 0.3s ease-out',
+				'slide-up': 'slide-up 0.3s ease-out'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
+				display: ['Space Grotesk', 'sans-serif'],
+				body: ['Fira Sans', 'sans-serif'],
 				serif: ['Merriweather', 'serif'],
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						'color': 'hsl(var(--foreground))',
+						'a': {
+							'color': 'hsl(var(--primary))',
+							'text-decoration': 'none',
+							'&:hover': {
+								'color': 'hsl(var(--primary))',
+							},
+						},
+						'h1, h2, h3, h4, h5, h6': {
+							'color': 'hsl(var(--foreground))',
+							'font-family': 'Space Grotesk, sans-serif',
+							'font-weight': '600',
+						},
+						'code': {
+							'color': 'hsl(var(--primary))',
+							'background-color': 'hsl(var(--muted))',
+							'padding': '0.2em 0.4em',
+							'border-radius': '0.25rem',
+						},
+						'blockquote': {
+							'border-left-color': 'hsl(var(--primary))',
+						},
+						'hr': {
+							'border-color': 'hsl(var(--border))',
+						},
+						'thead': {
+							'border-bottom-color': 'hsl(var(--border))',
+						},
+						'tbody tr': {
+							'border-bottom-color': 'hsl(var(--border))',
+						},
+					},
+				},
 			},
 		}
 	},
