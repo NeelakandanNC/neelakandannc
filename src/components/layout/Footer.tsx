@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Linkedin, Mail, Instagram, Twitter, Facebook, Youtube, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
       </Button>
       
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-display font-bold mb-4 text-gradient">Neelakandan NC</h3>
             <p className="text-muted-foreground">
@@ -57,64 +57,6 @@ const Footer = () => {
                 </NavLink>
               </li>
             </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-display font-semibold mb-4">Connect</h4>
-            <div className="flex flex-wrap gap-3">
-              <a 
-                href="https://www.linkedin.com/in/neelakandan-nc/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a 
-                href="mailto:neelakandannithin@gmail.com"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
-              <a 
-                href="https://www.instagram.com/neelakandannc/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
-              <a 
-                href="https://x.com/NeelakandanNC" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="X (Twitter)"
-              >
-                <Twitter size={18} />
-              </a>
-              <a 
-                href="https://www.facebook.com/NeelakandanNC" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook size={18} />
-              </a>
-              <a 
-                href="https://www.youtube.com/@Journeyofbuilders" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="size-9 rounded-full bg-foreground/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
-                aria-label="YouTube"
-              >
-                <Youtube size={18} />
-              </a>
-            </div>
           </div>
         </div>
         
