@@ -2,20 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { useTheme } from '@/hooks/use-theme';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+  const { theme, setTheme } = useTheme();
   
   useEffect(() => {
-    // Ensure dark mode is always applied
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
@@ -49,6 +48,10 @@ const Navbar = () => {
     { name: "Works", path: "/projects" },
   ];
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <header 
       className={cn(
@@ -64,7 +67,7 @@ const Navbar = () => {
           Neelakandan NC
         </NavLink>
         
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -79,9 +82,28 @@ const Navbar = () => {
               {link.name}
             </NavLink>
           ))}
+          
+          <div className="flex items-center space-x-2">
+            <Moon className={`h-4 w-4 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`} />
+            <Switch 
+              checked={theme === 'light'} 
+              onCheckedChange={toggleTheme} 
+            />
+            <Sun className={`h-4 w-4 ${theme === 'light' ? 'text-primary' : 'text-muted-foreground'}`} />
+          </div>
         </nav>
 
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center space-x-4">
+          <div className="flex items-center space-x-1 mr-2">
+            <Moon className={`h-4 w-4 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`} />
+            <Switch 
+              checked={theme === 'light'} 
+              onCheckedChange={toggleTheme}
+              size="sm"
+            />
+            <Sun className={`h-4 w-4 ${theme === 'light' ? 'text-primary' : 'text-muted-foreground'}`} />
+          </div>
+          
           <Button 
             variant="ghost" 
             size="icon" 

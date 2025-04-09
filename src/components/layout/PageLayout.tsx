@@ -2,6 +2,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { ThemeProvider } from '@/hooks/use-theme';
 
 interface PageLayoutProps {
   children: ReactNode;
@@ -9,10 +10,6 @@ interface PageLayoutProps {
 
 const PageLayout = ({ children }: PageLayoutProps) => {
   useEffect(() => {
-    // Ensure dark mode is always applied
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-    
     // Scroll to top on page change
     window.scrollTo(0, 0);
     
@@ -36,13 +33,15 @@ const PageLayout = ({ children }: PageLayoutProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow pt-16 md:pt-20 animate-fade-in">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow pt-16 md:pt-20 animate-fade-in">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 };
 
