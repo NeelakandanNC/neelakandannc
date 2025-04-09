@@ -43,54 +43,15 @@ const featuredPosts: BlogPost[] = [
 const Index = () => {
   return (
     <PageLayout>
-      {/* Hero Section */}
+      {/* Combined Hero and About Section */}
       <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-background to-muted">
         <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
-          <div className="max-w-3xl space-y-6 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight">
-              Welcome to Neelakandan NC
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              Documenting my journey, sharing my thoughts, and showcasing my work.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Button asChild size="lg">
-                <Link to="/blog">
-                  Read My Stories
-                </Link>
-              </Button>
-              <Button variant="outline" asChild size="lg">
-                <Link to="/projects">
-                  View Works
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
-          <SectionHeader 
-            title="About Me" 
-            subtitle="A brief introduction about who I am and what I do."
-            className="animate-on-scroll"
-          />
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="animate-on-scroll">
-              <div className="aspect-square rounded-2xl bg-muted overflow-hidden border border-border">
-                <img 
-                  src="/lovable-uploads/30216f8c-ddb5-4ea6-89d2-e2a31290c718.png" 
-                  alt="Neelakandan NC" 
-                  className="w-full h-full object-cover object-center"
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-6 animate-on-scroll">
-              <p className="text-lg">
+            <div className="max-w-3xl space-y-6 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight">
+                Welcome to Neelakandan NC
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground">
                 Hello! I'm a passionate creator, thinker, and storyteller. This personal blog is where I share my thoughts, document my journey, and showcase the projects I've worked on over the years.
               </p>
               <p className="text-lg">
@@ -99,11 +60,32 @@ const Index = () => {
               <p className="text-lg">
                 Through this platform, I aim to connect with like-minded individuals and build a community of creators who inspire each other.
               </p>
-              <Button asChild>
-                <Link to="/timeline">
-                  View My Timeline <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Button asChild size="lg">
+                  <Link to="/blog">
+                    Read My Stories
+                  </Link>
+                </Button>
+                <Button variant="outline" asChild size="lg">
+                  <Link to="/projects">
+                    View Works
+                  </Link>
+                </Button>
+                <Button asChild>
+                  <Link to="/timeline">
+                    View My Timeline <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <div className="animate-on-scroll hidden md:block">
+              <div className="aspect-square rounded-2xl bg-muted overflow-hidden border border-border">
+                <img 
+                  src="/lovable-uploads/30216f8c-ddb5-4ea6-89d2-e2a31290c718.png" 
+                  alt="Neelakandan NC" 
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>
