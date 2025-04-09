@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,19 +13,18 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Determine if scrolled
       if (currentScrollY > 10) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
       
-      // Determine if should hide navbar
       if (currentScrollY > lastScrollY && currentScrollY > 80) {
         setIsVisible(false);
       } else {
@@ -54,12 +52,19 @@ const Navbar = () => {
   };
 
   const handleConnectClick = (e) => {
+    e.preventDefault();
+    
     if (location.pathname === '/') {
-      e.preventDefault();
       const connectSection = document.getElementById('connect-section');
       if (connectSection) {
         connectSection.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      navigate('/#connect-section');
+    }
+    
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
     }
   };
 
@@ -98,11 +103,8 @@ const Navbar = () => {
             variant="outline" 
             className="ml-2" 
             onClick={handleConnectClick}
-            asChild
           >
-            <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
-              Connect
-            </NavLink>
+            Connect
           </Button>
           
           <div className="flex items-center space-x-2">
@@ -121,11 +123,8 @@ const Navbar = () => {
             size="sm" 
             className="mr-2" 
             onClick={handleConnectClick}
-            asChild
           >
-            <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
-              Connect
-            </NavLink>
+            Connect
           </Button>
           
           <div className="flex items-center space-x-1 mr-2">
@@ -148,7 +147,6 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="fixed inset-0 bg-background/95 backdrop-blur-md z-50 animate-fade-in">
             <div className="container mx-auto px-4 py-5 flex justify-between items-center">
@@ -182,15 +180,9 @@ const Navbar = () => {
               <Button 
                 variant="outline" 
                 className="w-full" 
-                onClick={(e) => {
-                  handleConnectClick(e);
-                  setIsMenuOpen(false);
-                }}
-                asChild
+                onClick={handleConnectClick}
               >
-                <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
-                  Connect
-                </NavLink>
+                Connect
               </Button>
             </nav>
           </div>
