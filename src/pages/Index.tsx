@@ -63,15 +63,15 @@ const Index = () => {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button asChild size="lg">
                   <Link to="/blog">
-                    Read My Stories
+                    Read My Articles
                   </Link>
                 </Button>
-                <Button variant="outline" asChild size="lg">
+                <Button asChild size="lg">
                   <Link to="/projects">
                     View Works
                   </Link>
                 </Button>
-                <Button asChild>
+                <Button asChild size="lg">
                   <Link to="/timeline">
                     View My Timeline <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
