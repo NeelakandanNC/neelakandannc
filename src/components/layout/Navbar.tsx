@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +53,16 @@ const Navbar = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const handleConnectClick = (e) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const connectSection = document.getElementById('connect-section');
+      if (connectSection) {
+        connectSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header 
       className={cn(
@@ -83,6 +94,17 @@ const Navbar = () => {
             </NavLink>
           ))}
           
+          <Button 
+            variant="outline" 
+            className="ml-2" 
+            onClick={handleConnectClick}
+            asChild
+          >
+            <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
+              Connect
+            </NavLink>
+          </Button>
+          
           <div className="flex items-center space-x-2">
             <Moon className={`h-4 w-4 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`} />
             <Switch 
@@ -94,6 +116,18 @@ const Navbar = () => {
         </nav>
 
         <div className="md:hidden flex items-center space-x-4">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="mr-2" 
+            onClick={handleConnectClick}
+            asChild
+          >
+            <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
+              Connect
+            </NavLink>
+          </Button>
+          
           <div className="flex items-center space-x-1 mr-2">
             <Moon className={`h-4 w-4 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`} />
             <Switch 
@@ -144,6 +178,20 @@ const Navbar = () => {
                   {link.name}
                 </NavLink>
               ))}
+              
+              <Button 
+                variant="outline" 
+                className="w-full" 
+                onClick={(e) => {
+                  handleConnectClick(e);
+                  setIsMenuOpen(false);
+                }}
+                asChild
+              >
+                <NavLink to={location.pathname !== '/' ? '/#connect-section' : '#'}>
+                  Connect
+                </NavLink>
+              </Button>
             </nav>
           </div>
         )}

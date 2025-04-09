@@ -120,7 +120,7 @@ const Index = () => {
       </section>
 
       {/* Contact CTA with Social Media Icons */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section id="connect-section" className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-6 text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold animate-on-scroll">
             Let's Connect!
