@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import TimelineCard, { TimelineEvent } from '@/components/timeline/TimelineCard';
@@ -54,13 +53,6 @@ const timelineEvents: TimelineEvent[] = [
     title: 'Graduated from University',
     description: 'Earned my Bachelor\'s degree in Computer Science with honors.',
     image: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b',
-  },
-  {
-    id: '8',
-    year: '2015',
-    title: 'Started University',
-    description: 'Began my journey in higher education, studying Computer Science.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f',
   },
   {
     id: '9',
