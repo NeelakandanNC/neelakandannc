@@ -84,7 +84,7 @@ const Navbar = () => {
           Neelakandan NC
         </NavLink>
         
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden md:flex items-center space-x-4">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -102,7 +102,7 @@ const Navbar = () => {
           
           <Button 
             variant="outline" 
-            size="default"
+            size="sm"
             onClick={handleConnectClick}
           >
             Connect
@@ -113,12 +113,13 @@ const Navbar = () => {
             <Switch 
               checked={theme === 'light'} 
               onCheckedChange={toggleTheme} 
+              size="sm"
             />
             <Sun className={`h-4 w-4 ${theme === 'light' ? 'text-primary' : 'text-muted-foreground'}`} />
           </div>
         </nav>
 
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="md:hidden flex items-center space-x-3">
           <Button 
             variant="outline"
             size="sm"
@@ -127,7 +128,7 @@ const Navbar = () => {
             Connect
           </Button>
           
-          <div className="flex items-center space-x-1 mr-2">
+          <div className="flex items-center space-x-1">
             <Moon className={`h-4 w-4 ${theme === 'dark' ? 'text-primary' : 'text-muted-foreground'}`} />
             <Switch 
               checked={theme === 'light'} 
@@ -139,7 +140,7 @@ const Navbar = () => {
           
           <Button 
             variant="ghost" 
-            size="icon" 
+            size="sm" 
             onClick={() => setIsMenuOpen(true)}
           >
             <Menu className="h-5 w-5" />
