@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -25,41 +24,6 @@ const Footer = () => {
       </Button>
       
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-display font-bold mb-4 text-gradient">Neelakandan NC</h3>
-            <p className="text-muted-foreground">
-              Documenting my journey, sharing my thoughts, and showcasing my work.
-            </p>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-display font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <NavLink to="/" className="text-muted-foreground animated-link">
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/blog" className="text-muted-foreground animated-link">
-                  Stories
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/timeline" className="text-muted-foreground animated-link">
-                  Timeline
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/projects" className="text-muted-foreground animated-link">
-                  Works
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
         <div className="mt-12 pt-6 border-t border-border/20 text-center">
           <p className="text-muted-foreground text-sm">
             &copy; {currentYear} Neelakandan NC. All rights reserved.

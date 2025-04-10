@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -83,7 +84,7 @@ const Navbar = () => {
           Neelakandan NC
         </NavLink>
         
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -101,7 +102,7 @@ const Navbar = () => {
           
           <Button 
             variant="outline" 
-            className="ml-2" 
+            size="default"
             onClick={handleConnectClick}
           >
             Connect
@@ -119,9 +120,8 @@ const Navbar = () => {
 
         <div className="md:hidden flex items-center space-x-4">
           <Button 
-            variant="outline" 
-            size="sm" 
-            className="mr-2" 
+            variant="outline"
+            size="sm"
             onClick={handleConnectClick}
           >
             Connect
@@ -178,8 +178,8 @@ const Navbar = () => {
               ))}
               
               <Button 
-                variant="outline" 
-                className="w-full" 
+                variant="outline"
+                className="w-full"
                 onClick={handleConnectClick}
               >
                 Connect
