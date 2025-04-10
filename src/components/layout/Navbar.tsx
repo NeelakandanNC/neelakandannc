@@ -101,9 +101,10 @@ const Navbar = () => {
           ))}
           
           <Button 
-            variant="outline" 
+            variant="default" 
             size="sm"
             onClick={handleConnectClick}
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
           >
             Connect
           </Button>
@@ -121,9 +122,10 @@ const Navbar = () => {
 
         <div className="md:hidden flex items-center space-x-3">
           <Button 
-            variant="outline"
+            variant="default"
             size="sm"
             onClick={handleConnectClick}
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
           >
             Connect
           </Button>
@@ -179,8 +181,8 @@ const Navbar = () => {
               ))}
               
               <Button 
-                variant="outline"
-                className="w-full"
+                variant="default"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium"
                 onClick={handleConnectClick}
               >
                 Connect
