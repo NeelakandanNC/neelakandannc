@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import { Button } from '@/components/ui/button';
@@ -95,7 +94,7 @@ const Index = () => {
       <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeader 
-            title="Featured Stories" 
+            title="Featured Articles" 
             subtitle="Read some of my latest thoughts and insights."
             centered
             className="animate-on-scroll"
@@ -112,7 +111,7 @@ const Index = () => {
           <div className="mt-10 text-center animate-on-scroll">
             <Button asChild>
               <Link to="/blog">
-                View All Stories <ArrowRight className="ml-2 h-4 w-4" />
+                View All Articles <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>

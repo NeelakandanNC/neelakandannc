@@ -119,7 +119,7 @@ const Blog = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-display font-bold mb-4 text-gradient">
-              My Stories
+              My Articles
             </h1>
             <p className="text-xl text-muted-foreground">
               Thoughts, insights, tutorials, and stories from my personal and professional journey.
@@ -136,7 +136,7 @@ const Blog = () => {
             <div className="relative flex-grow">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search stories..."
+                placeholder="Search articles..."
                 className="pl-10"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -169,7 +169,7 @@ const Blog = () => {
             <div className="mb-16">
               <div className="flex items-center gap-2 mb-6">
                 <BookOpen className="h-5 w-5 text-primary" />
-                <h2 className="text-2xl font-display font-semibold">Featured Posts</h2>
+                <h2 className="text-2xl font-display font-semibold">Featured Articles</h2>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -193,7 +193,7 @@ const Blog = () => {
             ) : (
               filteredPosts.length === 0 && (
                 <div className="col-span-full py-20 text-center">
-                  <p className="text-xl text-muted-foreground">No stories found matching your criteria.</p>
+                  <p className="text-xl text-muted-foreground">No articles found matching your criteria.</p>
                 </div>
               )
             )}

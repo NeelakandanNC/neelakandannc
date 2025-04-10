@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -43,7 +42,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Stories", path: "/blog" },
+    { name: "Articles", path: "/blog" },
     { name: "Timeline", path: "/timeline" },
     { name: "Works", path: "/projects" },
   ];
