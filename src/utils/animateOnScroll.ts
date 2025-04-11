@@ -11,16 +11,19 @@ export const useAnimateOnScroll = () => {
         const elementVisible = 150;
         
         if (elementTop < window.innerHeight - elementVisible) {
+          // Type cast element to HTMLElement since Element doesn't have style property
+          const htmlElement = element as HTMLElement;
+          
           // Get custom delay if specified
-          const delay = element.style.getPropertyValue('--delay') || '0s';
+          const delay = htmlElement.style.getPropertyValue('--delay') || '0s';
           
           // Apply animation with delay
-          element.style.transitionDelay = delay;
-          element.classList.add("animated");
+          htmlElement.style.transitionDelay = delay;
+          htmlElement.classList.add("animated");
           
           // Remove delay after animation completes
           setTimeout(() => {
-            element.style.transitionDelay = '0s';
+            htmlElement.style.transitionDelay = '0s';
           }, 1000); // Adjust timeout based on animation duration
         }
       });
