@@ -3,7 +3,7 @@ import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import TimelineCard, { TimelineEvent } from '@/components/timeline/TimelineCard';
 import useAnimateOnScroll from '@/utils/animateOnScroll';
-import { Calendar, Clock, Sparkles } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 
 // Enhanced timeline data with new events
 const timelineEvents: TimelineEvent[] = [
@@ -105,13 +105,6 @@ const Timeline = () => {
             <p className="text-xl text-muted-foreground">
               A chronological journey through significant moments and milestones in my life.
             </p>
-            <div className="mt-10 flex justify-center">
-              <div className="animate-bounce">
-                <div className="rounded-full bg-secondary/20 p-2 inline-flex">
-                  <Sparkles className="h-5 w-5 text-secondary" />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

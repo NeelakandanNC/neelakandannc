@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Calendar, Star } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 export interface TimelineEvent {
   id: string;
@@ -38,9 +38,7 @@ const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
           index % 3 === 0 ? "from-primary to-secondary" : 
           index % 3 === 1 ? "from-secondary to-accent" : 
           "from-accent to-primary"
-        )}>
-          <Star className="h-3 w-3 text-white" />
-        </div>
+        )}></div>
       </div>
       
       {/* Line connecting dots - only visible on md screens */}
