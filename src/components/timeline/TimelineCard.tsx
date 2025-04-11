@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Calendar, Star, GraduationCap, Clock, DollarSign, Briefcase, Rocket, BookOpen, ChartBar, LightBulb, Award, Coins, Store, Laptop } from 'lucide-react';
+import { Calendar, Star, GraduationCap, Clock, DollarSign, Briefcase, Rocket, BookOpen, ChartBar, Lightbulb, Award, Coins, Store, Laptop } from 'lucide-react';
 
 export interface TimelineEvent {
   id: string;
@@ -47,7 +46,7 @@ const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
       
       // Entrepreneurship theme
       [<Rocket key="rocket" className="text-primary animate-float" />, 
-       <LightBulb key="bulb" className="text-secondary animate-pulse" />, 
+       <Lightbulb key="bulb" className="text-secondary animate-pulse" />, 
        <Laptop key="laptop" className="text-accent animate-bounce" />]
     ];
     
