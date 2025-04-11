@@ -32,7 +32,7 @@ const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
       style={{ '--delay': animationDelay } as React.CSSProperties}
     >
       {/* Timeline dot - only visible on md screens and up */}
-      <div className="hidden md:flex absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 z-10">
+      <div className="hidden md:flex absolute top-5 left-1/2 transform -translate-x-1/2 z-10">
         <div className={cn(
           "w-6 h-6 rounded-full bg-gradient-to-r shadow-lg flex items-center justify-center",
           index % 3 === 0 ? "from-primary to-secondary" : 
@@ -43,13 +43,22 @@ const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
         </div>
       </div>
       
-      {/* Line to dot - only visible on md screens */}
+      {/* Line connecting dots - only visible on md screens */}
       <div className={cn(
-        "hidden md:block absolute top-0 h-[2px]",
+        "hidden md:block absolute top-5 h-[2px]",
         position === 'left' ? "right-0 left-auto w-[calc(50%-12px)]" : "left-0 right-auto w-[calc(50%-12px)]",
         index % 3 === 0 ? "bg-primary/50" : 
         index % 3 === 1 ? "bg-secondary/50" : 
         "bg-accent/50"
+      )}></div>
+      
+      {/* Line connecting to next dot - only visible on md screens */}
+      <div className={cn(
+        "hidden md:block absolute top-5 bottom-0 w-[2px] left-1/2 transform -translate-x-1/2",
+        index % 3 === 0 ? "bg-primary/30" : 
+        index % 3 === 1 ? "bg-secondary/30" : 
+        "bg-accent/30",
+        "h-full"
       )}></div>
       
       <Card 

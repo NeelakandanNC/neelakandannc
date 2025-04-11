@@ -93,7 +93,7 @@ const Timeline = () => {
   return (
     <PageLayout>
       {/* Hero Section - Enhanced with animation and gradient */}
-      <section className="bg-gradient-to-r from-secondary/10 to-primary/10 py-20 md:py-28">
+      <section className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 py-20 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
             <div className="flex justify-center mb-6">
@@ -126,26 +126,37 @@ const Timeline = () => {
         
         <div className="container mx-auto px-4 md:px-6">
           <div className="relative">
-            {/* Timeline center line - enhanced styling */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/40 via-secondary/40 to-primary/40 rounded-full"></div>
-            
+            {/* Timeline header */}
             <div className="flex items-center justify-center mb-12">
-              <div className="flex items-center space-x-2 bg-card p-3 px-5 rounded-full shadow-md border-border/50">
+              <div className="flex items-center space-x-2 bg-card p-3 px-5 rounded-full shadow-md border border-border/50">
                 <Calendar className="h-5 w-5 text-primary" />
                 <span className="text-lg font-medium">Journey Timeline</span>
               </div>
             </div>
             
-            {/* Timeline Events */}
-            <div className="space-y-16">
-              {timelineEvents.map((event, index) => (
-                <TimelineCard 
-                  key={event.id} 
-                  event={event} 
-                  position={index % 2 === 0 ? 'left' : 'right'} 
-                  index={index}
-                />
-              ))}
+            {/* Timeline container with connected events */}
+            <div className="relative">
+              {/* Main timeline vertical line - visible on md screens and up */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-secondary/20 to-accent/20"></div>
+              
+              {/* Timeline Events */}
+              <div className="space-y-24 md:space-y-0">
+                {timelineEvents.map((event, index) => (
+                  <TimelineCard 
+                    key={event.id} 
+                    event={event} 
+                    position={index % 2 === 0 ? 'left' : 'right'} 
+                    index={index}
+                  />
+                ))}
+              </div>
+              
+              {/* Timeline end marker */}
+              <div className="hidden md:flex mt-12 justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center shadow-lg">
+                  <Calendar className="w-6 h-6 text-white" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
