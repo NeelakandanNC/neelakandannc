@@ -1,11 +1,8 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import BlogCard, { BlogPost } from '@/components/blog/BlogCard';
-import { Button } from '@/components/ui/button';
-import { Search, Filter, BookOpen } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { cn } from '@/lib/utils';
+import { BookOpen } from 'lucide-react';
 
 // Sample blog data
 const blogPosts: BlogPost[] = [
@@ -68,21 +65,10 @@ const blogPosts: BlogPost[] = [
 ];
 
 const Blog = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
   const [observer, setObserver] = useState<IntersectionObserver | null>(null);
   
-  const categories = ['All', ...Array.from(new Set(blogPosts.map(post => post.category)))];
-  
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
-
-  const featuredPosts = filteredPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPosts = blogPosts.filter(post => post.featured);
+  const regularPosts = blogPosts.filter(post => !post.featured);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -110,7 +96,7 @@ const Blog = () => {
         observer.observe(el);
       });
     }
-  }, [filteredPosts, observer]);
+  }, [observer]);
 
   return (
     <PageLayout>
@@ -131,39 +117,6 @@ const Blog = () => {
       {/* Blog Content */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
-          {/* Search and Filter */}
-          <div className="flex flex-col md:flex-row gap-4 mb-10 animate-fade-in">
-            <div className="relative flex-grow">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                placeholder="Search articles..."
-                className="pl-10"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0">
-              <Filter className="text-muted-foreground h-4 w-4 hidden md:block" />
-              <span className="text-sm text-muted-foreground hidden md:block">Filter by:</span>
-              <div className="flex flex-nowrap gap-2">
-                {categories.map(category => (
-                  <Button 
-                    key={category} 
-                    variant={selectedCategory === category ? "default" : "outline"} 
-                    size="sm"
-                    onClick={() => setSelectedCategory(category)}
-                    className={cn(
-                      "whitespace-nowrap",
-                      selectedCategory === category ? "neon-glow" : ""
-                    )}
-                  >
-                    {category}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-          
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
             <div className="mb-16">
@@ -184,19 +137,11 @@ const Blog = () => {
           
           {/* Regular Blog Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {regularPosts.length > 0 ? (
-              regularPosts.map((post) => (
-                <div key={post.id} className="animate-on-scroll">
-                  <BlogCard post={post} className="h-full" />
-                </div>
-              ))
-            ) : (
-              filteredPosts.length === 0 && (
-                <div className="col-span-full py-20 text-center">
-                  <p className="text-xl text-muted-foreground">No articles found matching your criteria.</p>
-                </div>
-              )
-            )}
+            {regularPosts.map((post) => (
+              <div key={post.id} className="animate-on-scroll">
+                <BlogCard post={post} className="h-full" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
