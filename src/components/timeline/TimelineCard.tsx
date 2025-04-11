@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Calendar, Star } from 'lucide-react';
+import { Calendar, Star, GraduationCap, Clock, DollarSign, Briefcase, Rocket, BookOpen, ChartBar, LightBulb, Award, Coins, Store, Laptop } from 'lucide-react';
 
 export interface TimelineEvent {
   id: string;
@@ -21,6 +21,38 @@ interface TimelineCardProps {
 const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
   // Calculate delay based on index for staggered animation
   const animationDelay = `${index * 0.15}s`;
+  
+  // Function to get icons based on index for various fields
+  const getFloatingIcons = (idx: number) => {
+    // Different icon sets based on theme/field
+    const fields = [
+      // Finance theme
+      [<DollarSign key="dollar" className="text-primary animate-bounce" />, 
+       <Coins key="coins" className="text-secondary animate-pulse" />, 
+       <ChartBar key="chart" className="text-accent animate-float" />],
+      
+      // Education theme
+      [<GraduationCap key="grad" className="text-primary animate-float" />, 
+       <BookOpen key="book" className="text-secondary animate-bounce" />, 
+       <Award key="award" className="text-accent animate-pulse" />],
+      
+      // Time theme
+      [<Clock key="clock" className="text-primary animate-spin-slow" />, 
+       <Calendar key="calendar" className="text-secondary animate-pulse" />],
+      
+      // Business theme
+      [<Briefcase key="briefcase" className="text-primary animate-float" />, 
+       <Store key="store" className="text-secondary animate-pulse" />, 
+       <ChartBar key="chart-business" className="text-accent animate-bounce" />],
+      
+      // Entrepreneurship theme
+      [<Rocket key="rocket" className="text-primary animate-float" />, 
+       <LightBulb key="bulb" className="text-secondary animate-pulse" />, 
+       <Laptop key="laptop" className="text-accent animate-bounce" />]
+    ];
+    
+    return fields[idx % fields.length];
+  };
   
   return (
     <div 
@@ -60,6 +92,33 @@ const TimelineCard = ({ event, position, index }: TimelineCardProps) => {
         "bg-accent/30",
         "h-full"
       )}></div>
+      
+      {/* Floating icons in the timeline space - visible on md screens and up */}
+      <div className="hidden md:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16">
+        <div className="relative w-full h-full">
+          {/* Get icons based on card index */}
+          {getFloatingIcons(index).map((icon, i) => {
+            // Calculate random position for each icon
+            const randomX = (i * 20) % 40;
+            const randomY = ((i * 25) + 10) % 50;
+            const randomDelay = (i * 0.5) % 2;
+            
+            return (
+              <div 
+                key={`icon-${i}`} 
+                className="absolute"
+                style={{
+                  left: `${randomX}%`,
+                  top: `${randomY}%`,
+                  animationDelay: `${randomDelay}s`,
+                }}
+              >
+                {icon}
+              </div>
+            );
+          })}
+        </div>
+      </div>
       
       <Card 
         className={cn(
