@@ -1,7 +1,9 @@
+
 import React from 'react';
 import PageLayout from '@/components/layout/PageLayout';
 import TimelineCard, { TimelineEvent } from '@/components/timeline/TimelineCard';
 import useAnimateOnScroll from '@/utils/animateOnScroll';
+import { Calendar, Clock, Sparkles } from 'lucide-react';
 
 // Enhanced timeline data with new events
 const timelineEvents: TimelineEvent[] = [
@@ -90,32 +92,58 @@ const Timeline = () => {
   
   return (
     <PageLayout>
-      {/* Hero Section */}
-      <section className="bg-muted py-20 md:py-28">
+      {/* Hero Section - Enhanced with animation and gradient */}
+      <section className="bg-gradient-to-r from-secondary/10 to-primary/10 py-20 md:py-28">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">My Life Timeline</h1>
+            <div className="flex justify-center mb-6">
+              <div className="rounded-full bg-primary/10 p-3 inline-flex items-center justify-center animate-pulse">
+                <Clock className="h-6 w-6 text-primary" />
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">My Life Timeline</h1>
             <p className="text-xl text-muted-foreground">
               A chronological journey through significant moments and milestones in my life.
             </p>
+            <div className="mt-10 flex justify-center">
+              <div className="animate-bounce">
+                <div className="rounded-full bg-secondary/20 p-2 inline-flex">
+                  <Sparkles className="h-5 w-5 text-secondary" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-16 md:py-24">
+      {/* Timeline Section - Enhanced with better styling */}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 -z-10 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary blur-3xl"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-secondary blur-3xl"></div>
+        </div>
+        
         <div className="container mx-auto px-4 md:px-6">
           <div className="relative">
-            {/* Timeline center line - visible on md screens and up */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-border"></div>
+            {/* Timeline center line - enhanced styling */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/40 via-secondary/40 to-primary/40 rounded-full"></div>
+            
+            <div className="flex items-center justify-center mb-12">
+              <div className="flex items-center space-x-2 bg-card p-3 px-5 rounded-full shadow-md border-border/50">
+                <Calendar className="h-5 w-5 text-primary" />
+                <span className="text-lg font-medium">Journey Timeline</span>
+              </div>
+            </div>
             
             {/* Timeline Events */}
-            <div className="space-y-12">
+            <div className="space-y-16">
               {timelineEvents.map((event, index) => (
                 <TimelineCard 
                   key={event.id} 
                   event={event} 
                   position={index % 2 === 0 ? 'left' : 'right'} 
+                  index={index}
                 />
               ))}
             </div>
